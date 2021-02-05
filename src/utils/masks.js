@@ -22,6 +22,9 @@ const masks = {
       style: 'currency',
       currency: 'BRL',
     }).format(+value.replace(/\D+/g, '') / 100)
+  },
+  date(value) {
+    return `${value.replace(/\T/g, ' ')}:00`
   }
 }
 

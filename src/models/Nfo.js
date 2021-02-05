@@ -1,5 +1,3 @@
-import Product from "./Product"
-
 export default class Nfo {
   id
   active
@@ -16,7 +14,8 @@ export default class Nfo {
     this.number = data.number
     this.type = data.type
     this.key = data.key
-    this.emission = new Date(data.emission)
+    this.emission = data.emission.replace('.000Z', '')
     this.value = data.value
   }
+
 }

@@ -1,4 +1,4 @@
-import { transformData } from "../utils/transformDataToRequest";
+import { transformData } from "./transformDataToRequest";
 import { makeRequestNewClient, makeRequestNewNf, makeRequestNewOccurrence, makeRequestNewProduct } from "./newOccurrence";
 
 export default function NewOccurrence(oc) {

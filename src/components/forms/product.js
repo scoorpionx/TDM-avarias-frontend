@@ -74,7 +74,7 @@ const ProductForm = ({ value:product, onChange }) => {
         <StyledSelect
           label="EMBALAGEM"
           variant="outlined"
-          value={product.packing ? product.packing : ''}
+          value={product?.packing}
           onChange={e => onChange({ ...product, packing: e.target.value })}
         >
           {packing.map((item) => (

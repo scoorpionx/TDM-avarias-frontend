@@ -51,7 +51,7 @@ const OccurrenceComponent = ({ globalState, cols, occurrences }) => {
           {arrayContains('CTE', cols) ? <ColumnItem >{occurrence.cte.codigo}</ColumnItem> : null}
           {arrayContains('MOTORISTA', cols) ? <ColumnItem >{occurrence.name_mot}</ColumnItem> : null}
           {arrayContains('NFO', cols) ? <ColumnItem >{occurrence.nfo.number}</ColumnItem> : null}
-          {arrayContains('DATA NFD', cols) ? <ColumnItem >{occurrence.nfd.emission.toLocaleDateString()}</ColumnItem> : null}
+          {arrayContains('DATA NFD', cols) ? <ColumnItem >{new Date(occurrence.nfd.emission).toLocaleDateString()}</ColumnItem> : null}
           {arrayContains('NFD', cols) ? <ColumnItem >{occurrence.nfd.number}</ColumnItem> : null}
           {arrayContains('VALOR', cols) ? <ColumnItem >R$ {formatMoney(occurrence.nfd.value, 2, ',', '.')}</ColumnItem> : null}
           {arrayContains('TIPO', cols) ? <ColumnItem >{occurrence.type}</ColumnItem> : null}

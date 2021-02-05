@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { getToken } from "../../pages/api/auth"
 import { api } from "../../pages/api/hooks"
 import ProductForm from "./product"
+import masks from "../../utils/masks"
 
 const nfType = [
   'ORIGEM',
@@ -47,6 +48,10 @@ const NfForm = ({ value:nf, type, onChange }) => {
         selectType = type
       }
     })
+  }
+
+  const handleChange = (e) => {
+    console.log(masks.date(e))
   }
 
   const handleSearch = async (key) => {
@@ -107,7 +112,9 @@ const NfForm = ({ value:nf, type, onChange }) => {
         type="datetime-local"
         variant="outlined"
         value={nf.emission ? nf.emission : ''}
+        format="DD-MM-YYYY"
         onChange={e => onChange({ ...nf, emission: e.target.value })}
+        onBlur={e => handleChange(e.target.value)}
       />
       <ProductForm
         value={nf.product ? nf.product : ''}

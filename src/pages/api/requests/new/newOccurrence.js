@@ -50,7 +50,7 @@ export async function makeRequestNewNf(nf, token) {
 
 export async function makeRequestNewOccurrence(oc, token) {
   const response = await api.post(
-    `oc`, 
+    `occurrence`, 
     oc, 
     {
       headers: {

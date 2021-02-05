@@ -10,6 +10,7 @@ import NfForm from "../forms/nf"
 import editOccurrence from "../../pages/api/requests/edit/index"
 import newOccurrence from "../../pages/api/requests/new/index"
 import { api } from "../../pages/api/hooks"
+import { getToken } from "../../pages/api/auth"
 
 const type = [
   'AVARIA', 
@@ -88,16 +89,19 @@ const ModalForm = ({ globalState }) => {
   }
 
   const handleSendClick = async () => {
-    if(!globalState.actualOccurrence) {
-      const editAll = editOccurrence(occurrence)
-      const response = await api.post('view-index-all',   {
-        status: globalState.filters.status,
-      }, {
-        headers: { 'Authorization': `Bearer ${getToken()}` },
-        params: { page: globalState.filters.occurrencesPage }
-      });
-      globalState.setAll(response.data)
+    if(globalState.actualOccurrence) {
+      await editOccurrence(occurrence)
+    } else {
+      await newOccurrence(occurrence)
     }
+    const response = await api.post('view-index-all',   {
+      status: globalState.filters.status,
+    }, {
+      headers: { 'Authorization': `Bearer ${getToken()}` },
+      params: { page: globalState.filters.occurrencesPage }
+    });
+    globalState.setAll(response.data)
+    handleCloseClick()
   }
 
   useEffect(() => {

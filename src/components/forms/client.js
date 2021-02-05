@@ -1,7 +1,9 @@
 import { TextField, FormControl } from "@material-ui/core"
+import Input from "@material-ui/core/Input"
 import styled from "styled-components"
 import { getToken } from "../../pages/api/auth"
 import { api } from "../../pages/api/hooks"
+import TextMask from "../../utils/textMask"
 
 const Wrapper = styled(FormControl)`
   && {
@@ -14,6 +16,11 @@ const Title = styled.span`
   margin-bottom: 0.2rem;
 `
 const StyledTextField = styled(TextField)`
+  && {
+    margin: 4px;
+  }
+`
+const StyledInput = styled(Input)`
   && {
     margin: 4px;
   }
@@ -59,11 +66,12 @@ const ClientForm = ({ value:client, onChange }) => {
         value={client.corporate_name ? client.corporate_name : ''}
         onChange={e => onChange({ ...client, corporate_name: e.target.value })}
       />
-      <StyledTextField
+      <StyledInput
         label="CNPJ"
         variant="outlined"
         value={client.cnpj ? client.cpnj : ''}
         onChange={e => onChange({ ...client, cnpj: e.target.value })}
+        inputComponent={TextMask}
         css={`width: 90%;`}
       />
       <StyledTextField

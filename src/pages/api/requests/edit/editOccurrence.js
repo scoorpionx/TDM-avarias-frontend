@@ -50,7 +50,7 @@ export async function makeRequestEditNf(nf, token) {
 
 export async function makeRequestEditOccurrence(oc, token) {
   const response = await api.patch(
-    `oc/${oc.id}`, 
+    `occurrence/${oc.id}`, 
     oc, 
     {
       headers: {

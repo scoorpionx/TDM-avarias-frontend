@@ -18,7 +18,7 @@ export default class Nfd {
     this.number = data.number
     this.type = data.type
     this.key = data.key
-    this.emission = new Date(data.emission)
+    this.emission = data.emission.replace('.000Z', '')
     this.value = data.value
     this.in = new Date(data.in)
     this.out = new Date(data.out)
